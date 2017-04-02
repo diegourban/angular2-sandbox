@@ -1,2 +1,13 @@
 # angular2-sandbox
-Angular 2 Sandbox
+
+## Requirements
+* Node.js + npm
+
+## Installation
+* ```npm install``` - to install dependencies
+
+## Usage
+* ```/server npm start``` - to start the server
+* ```/client npm start``` - to start the client
+
+* ```http://localhost:3000```
