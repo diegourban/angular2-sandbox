@@ -6,19 +6,4 @@ import { Http } from '@angular/http';
   selector: 'app',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
-
-  fotos: Array<Object> = [];
-
-  constructor(http: Http) {
-    
-    http
-    .get('v1/fotos')
-    .map(res => res.json())
-    .subscribe(fotos => {
-      this.fotos = fotos;
-      console.log(this.fotos);
-    }, err => console.log(err));
-  }
-
-}
+export class AppComponent { }
