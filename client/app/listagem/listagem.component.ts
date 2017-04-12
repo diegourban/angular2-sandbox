@@ -8,15 +8,35 @@ import { FotoComponent } from '../foto/foto.component';
     templateUrl: './listagem.component.html'
 })
 export class ListagemComponent {
+
     fotos: FotoComponent[] = [];
+    service: FotoService;
+    mensagem: string = '';
 
     constructor(service: FotoService) {
-    
-        service
-        .lista()
-        .subscribe(fotos => {
-            this.fotos = fotos;
-            console.log(this.fotos);
-        }, err => console.log(err));
+        this.service = service;
+
+        this.service
+            .lista()
+            .subscribe(fotos => {
+                this.fotos = fotos;
+                console.log(this.fotos);
+            }, err => console.log(err));
+    }
+
+    remover(foto: FotoComponent) {
+        this.service
+            .remove(foto)
+            .subscribe(() => {
+                let novasFotos = this.fotos.slice(0);
+                let indice = novasFotos.indexOf(foto);               
+                novasFotos.splice(indice, 1);
+                this.fotos = novasFotos;
+                console.log('Foto removida com sucesso');
+                this.mensagem = 'Foto removida com sucesso';
+            }, err => {
+                console.log(err)
+                this.mensagem = 'Não foi possível remover a foto';
+            });
     }
 }
