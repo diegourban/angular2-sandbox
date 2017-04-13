@@ -21,7 +21,7 @@ export class CadastroComponent {
         this.service = service;
         this.route = route;
         this.router = router;
-        
+
         this.route.params.subscribe(params => {
           let id = params['id'];
           if(id) {
@@ -50,6 +50,7 @@ export class CadastroComponent {
             .subscribe(() => {
                 console.log('Foto cadastrada com sucesso');
                 this.foto = new FotoComponent();
+                this.router.navigate(['']);
             }, err => console.log(err));
     }
 
